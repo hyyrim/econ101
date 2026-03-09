@@ -16,7 +16,7 @@ function buildEmailHtml(digest: KoreanDigest, dateString: string): string {
               </td>
               <td valign="top">
                 <p style="margin:0 0 6px;font-weight:700;color:#1e293b;font-size:15px;line-height:1.4;">${a.koreanTitle}</p>
-                <p style="margin:0 0 6px;color:#475569;font-size:14px;line-height:1.8;">${a.explanation}</p>
+                <div style="margin:0 0 6px;color:#475569;font-size:14px;line-height:1.8;">${a.explanation.split(/(?=①|②|③|④|⑤|⑥|⑦|⑧|⑨|⑩)/).filter(Boolean).map(s => `<p style="margin:0 0 4px;">${s.trim()}</p>`).join("")}</div>
                 ${a.originalUrl ? `<a href="${a.originalUrl}" style="color:#0284c7;font-size:12px;text-decoration:none;">원문 보기 →</a>` : ""}
               </td>
             </tr>
@@ -65,8 +65,8 @@ function buildEmailHtml(digest: KoreanDigest, dateString: string): string {
           <!-- Summary -->
           <tr>
             <td style="background:#ffffff;padding:24px 32px;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">
-              <p style="margin:0 0 8px;font-size:11px;font-weight:700;color:#0284c7;letter-spacing:0.08em;">오늘의 핵심 요약</p>
-              <p style="margin:0;color:#334155;font-size:15px;line-height:1.9;">${digest.summary}</p>
+              <p style="margin:0 0 8px;font-size:18px;font-weight:700;color:#0284c7;">오늘의 핵심 요약</p>
+              <p style="margin:0;color:#334155;font-size:15px;line-height:1.9;">${digest.summary.replace(/\*\*([^*]+)\*\*/g, '<strong style="background:#dbeafe;color:#1d4ed8;padding:1px 3px;border-radius:3px;">$1</strong>')}</p>
             </td>
           </tr>
 

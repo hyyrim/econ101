@@ -47,10 +47,23 @@ export default async function HomePage() {
 
       {/* 핵심 요약 */}
       <section className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-3">
+        <h3 className="text-lg font-bold text-blue-600 mb-3">
           오늘의 핵심 요약
         </h3>
-        <p className="text-slate-700 leading-relaxed">{digest.summary}</p>
+        <p className="text-base text-slate-700 leading-relaxed">
+          {digest.summary.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+            part.startsWith("**") && part.endsWith("**") ? (
+              <mark
+                key={i}
+                className="bg-blue-100 text-blue-800 font-semibold rounded px-0.5 not-italic"
+              >
+                {part.slice(2, -2)}
+              </mark>
+            ) : (
+              part
+            )
+          )}
+        </p>
       </section>
 
       {/* 주요 뉴스 */}
@@ -72,9 +85,14 @@ export default async function HomePage() {
                   <h4 className="font-semibold text-slate-900 leading-snug">
                     {article.koreanTitle}
                   </h4>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-                    {article.explanation}
-                  </p>
+                  <div className="text-sm text-slate-600 mt-2 leading-relaxed space-y-1.5">
+                    {article.explanation
+                      .split(/(?=①|②|③|④|⑤|⑥|⑦|⑧|⑨|⑩)/)
+                      .filter(Boolean)
+                      .map((sentence, j) => (
+                        <p key={j}>{sentence.trim()}</p>
+                      ))}
+                  </div>
                   {article.originalUrl && (
                     <a
                       href={article.originalUrl}
