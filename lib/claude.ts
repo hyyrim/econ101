@@ -118,7 +118,7 @@ ${articleList}
   "articles": [
     {
       "koreanTitle": "뉴스 제목을 자연스러운 한국어로 번역",
-      "explanation": "다음 4가지를 모두 포함해 4-6문장으로 작성: ① 이 뉴스의 배경(왜 이런 일이 생겼는지) ② 핵심 내용 ③ 한국 경제나 우리 생활에 미치는 영향 ④ 앞으로 주목할 점. 전문 용어는 괄호 안에 쉬운 설명 추가. 원문을 보지 않아도 상황을 완전히 이해할 수 있을 만큼 충분히 설명할 것.",
+      "explanation": "① 핵심 내용 ② 한국 경제나 우리 생활에 미치는 영향 ③ 앞으로의 전망, 이 세 가지를 4-5문장으로 작성. 전문 용어는 괄호 안에 쉬운 설명 추가.",
       "originalUrl": "원문 URL 그대로"
     }
   ],
@@ -131,14 +131,14 @@ ${articleList}
 }
 
 요구사항:
-- articles: 가장 중요한 5-7개 선택
-- learningSection: 뉴스에 등장한 어려운 경제 용어 3-5개 선택
+- articles: 가장 중요한 5개 선택
+- learningSection: 뉴스에 등장한 어려운 경제 용어 3개 선택
 - 모든 한국어는 정중한 존댓말(-습니다, -해요) 사용
 - 어려운 영어 표현은 반드시 한국어로 설명`;
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 8096,
+    max_tokens: 4096,
     messages: [{ role: "user", content: prompt }],
   });
 

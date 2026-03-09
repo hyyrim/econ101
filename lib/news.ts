@@ -53,10 +53,10 @@ export async function fetchEconomicNews(): Promise<RawArticle[]> {
         a.url &&
         !a.url.includes("removed")
     )
-    .slice(0, 15)
+    .slice(0, 10)
     .map((a) => ({
       title: a.title ?? "",
-      description: a.description ?? null,
+      description: a.description ? a.description.slice(0, 100) : null,
       url: a.url ?? "",
       source: a.source?.name ?? "Unknown",
       publishedAt: a.publishedAt ?? "",
