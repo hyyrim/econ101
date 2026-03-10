@@ -7,9 +7,9 @@
 
 ## 스크린샷
 
-| 뉴스 요약 | 경제 용어 학습 |
-|-----------|--------------|
-| ![뉴스 요약 화면](public/screenshots/screenshot1.png) | ![경제 용어 화면](public/screenshots/screenshot2.png) |
+| 뉴스 요약 | 경제 용어 학습 | 이메일 발송 |
+|-----------|--------------|------------|
+| ![뉴스 요약 화면](public/screenshots/screenshot1.png) | ![경제 용어 화면](public/screenshots/screenshot2.png) | ![이메일 화면](public/screenshots/screenshot3.png) |
 
 ## 주요 기능
 
